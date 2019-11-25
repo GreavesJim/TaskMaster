@@ -3,8 +3,8 @@ import Item from "./Models/Item.js";
 
 let _state = {
   /** @type {List[]} */
-  lists: []
-  item:[]
+  lists: [],
+  item: []
 };
 
 //NOTE You should not need to change the code from this point down
@@ -21,7 +21,7 @@ class Store {
   }
 
   get Item() {
-    return _state.item.map(item => new List(item));
+    return _state.item.map(item => new Item(item));
   }
   get Lists() {
     //NOTE use this getter to ensure the objects in list are all of type List

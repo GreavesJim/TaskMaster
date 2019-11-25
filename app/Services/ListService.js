@@ -7,8 +7,8 @@ class ListService {
   createItem(newItem) {
     debugger;
     let item = new Item(newItem);
-    let thisItem = store.State.item.find(i => i.id == item.id);
-    thisItem.item.push(item);
+
+    store.State.item.push(item);
     store.saveState();
   }
   //TODO  Here is where we handle all of our business logic,

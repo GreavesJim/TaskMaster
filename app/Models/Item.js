@@ -11,7 +11,7 @@ export default class Item {
   
   <dt> ${this.name}</dt>
   <button class="btn btn-outline btn-danger" 
-  onclick="app.sessionsController.removeSpeaker('${this.taskId}','${this.id}')">X</button>
+  onclick="app.sessionsController.removeItem('${this.taskId}','${this.id}')">X</button>
   
   
   
