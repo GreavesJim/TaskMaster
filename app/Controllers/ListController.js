@@ -8,26 +8,23 @@ function _drawLists() {
   let lists = store.Lists;
   lists.forEach(list => {
     listTemplate += list.Template;
-    document.querySelector("#new-items").innerHTML = listTemplate;
   });
+  document.querySelector("#new-items").innerHTML = listTemplate;
 }
 
 //Public
 export default class ListController {
   constructor() {
     //NOTE: After the store loads, we can automatically call to draw the lists.
-    debugger;
     _drawLists();
   }
   createList(event) {
-    debugger;
     event.preventDefault();
     console.log("hello from Controller");
 
     let formData = event.target;
     let newList = {
-      name: formData.name.value,
-      id: ""
+      name: formData.name.value
     };
 
     ListService.createList(newList);
@@ -39,14 +36,18 @@ export default class ListController {
     ListService.removeLists(id);
     _drawLists();
   }
-  //TODO: Your app will need the ability to create, and delete both lists and listItems
 
-  createItem(event) {
+  removeItem(id, listId) {
+    ListService.removeItem(id, listId);
+    _drawLists();
+  }
+
+  createItem(event, listId) {
     event.preventDefault();
-    debugger;
     let formData = event.target;
     let newItem = {
-      name: formData.name.value
+      name: formData.name.value,
+      listId: listId
     };
     ListService.createItem(newItem);
     formData.reset();

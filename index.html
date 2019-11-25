@@ -23,8 +23,8 @@
     </header>
     <main>
       <div class="container-fluid bg-primary text-black">
-        <div class="row">
-          <div id="tasks" class="col-12 col-md-4 p-3 mt-1 align-items-center">
+        <div id="tasks" class="row">
+          <div class="col-12 col-md-4 p-3 mt-1 align-items-center">
             <form onsubmit="app.listController.createList(event)">
               <div class="form-group">
                 <input
@@ -43,31 +43,41 @@
         </div>
         <div class="row" id="new-items"></div>
       </div>
-      <div class="row">
-          <div id="new-tasks" class="col-12 col-md-4">
-                <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-              <div class="card-body">
-                    <form onsubmit="app.listController.createItem(event)">
-                      <div class="form-group">
-                        <h3 class="color-secondary">${this.name}</h3>
-            
-              <h5 class="card-title" id="item"></h5>
-              <input
-              type="text"
-              class="form-control"
-              id="name"
-              aria-describedby="emailHelp"
-              placeholder="Enter Task"
-            />
-              <button type="submit" class="btn btn-secondary">
-                    Submit
-                    </button>
-                    <button class="btn btn-danger" onclick="app.listController.removeLists(id)">Delete</button>
+      <!-- <div id="new-tasks" class="row">
+        <div class="col-12 col-md-4">
+          <div class="card text-black bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+              <h3 class="color-success">${this.name}</h3>
+              ${this.getItemTemplates()}
+              <h5 class="card-title">Secondary card title</h5>
+              <form
+                onsubmit="app.listController.createItem(event, '${this.id}')"
+              >
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter Task"
+                  />
+                </div>
+
+                <button type="submit" class="btn btn-secondary">
+                  Submit
+                </button>
+                <button
+                  class="btn btn-danger"
+                  type="button"
+                  onclick="app.listController.removeLists('${this.id}')"
+                >
+                  Delete
+                </button>
+              </form>
             </div>
-          </form>
           </div>
         </div>
-      </div>
+      </div> -->
     </main>
     <footer></footer>
 

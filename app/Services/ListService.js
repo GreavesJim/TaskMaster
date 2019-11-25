@@ -4,12 +4,24 @@ import Item from "../Models/Item.js";
 
 //Public
 class ListService {
-  createItem(newItem) {
+  removeItem(id, listId) {
     debugger;
-    let item = new Item(newItem);
-
-    store.State.item.push(item);
+    if (window.confirm("Do you want to remove this item?")) {
+      let removeFromList = store.State.lists.find(i => i.id == listId);
+      let removeItem = removeFromList.items.findIndex(i => i.id == id);
+      removeFromList.items.splice(removeItem, 1);
+    }
     store.saveState();
+  }
+  createItem(newItem) {
+    console.log(store.State);
+
+    let item = new Item(newItem);
+    let List = store.State.lists.find(l => l.id == item.listId);
+
+    List.items.push(item);
+    store.saveState();
+    console.log(store.State);
   }
   //TODO  Here is where we handle all of our business logic,
   //given the information you need in the controller,
@@ -17,7 +29,6 @@ class ListService {
   //NOTE You will need this code to persist your data into local storage, be sure to call the store method to save after each change
   createList(newList) {
     console.log("hello from Service");
-    debugger;
     let list = new List(newList);
     store.State.lists.push(list);
     store.saveState();
